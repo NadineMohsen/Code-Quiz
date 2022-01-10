@@ -1,0 +1,39 @@
+h1{
+    text-align:center ;
+}
+
+#p1{
+   text-align:center;
+}
+
+button{
+    background-color: purple;
+    color:white;
+    width:150px;
+    height:70px;
+    font-size: 20px;
+}
+
+#button-container{
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+#time-left{
+    display: inline-block;
+}
+
+ul{
+    padding: 0;
+    padding-top:20px;
+    list-style-type: none;
+    margin: auto;
+    text-align: center;
+    color: purple;
+    font-size: 20px;
+}
+
+
+
+  
