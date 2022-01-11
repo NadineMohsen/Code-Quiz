@@ -23,14 +23,20 @@ var questions = [
 
 var button1 = document.getElementById("start-quiz");
 var timeLeft= document.getElementById("time-left")
-var question= document.getElementById("p1")
+var initialText= document.getElementById("initial-text")
+var buttonContainer = document.getElementById("button-container")
+var paragraph= document.getElementById("p1")
 var title=document.querySelector("h1")
-var quizContainer=document.getElementById("answers")
+var choicesList=document.getElementById("choices-list")
 var correct = document.getElementById("correct-wrong")
 
 var timer;
 var timerCount=75;
 var penalty=10;
+var userQuestion;
+var userChoices;
+var listItem;
+var qindex=0;
 
 // Attach event listener to start button to call startGame function on click
 button1.addEventListener("click", startGame)
@@ -39,7 +45,7 @@ button1.addEventListener("click", startGame)
 function startGame(){
   startTimer()
   displayQuiz()
-  displayChoices()
+  // displayChoices()
 }
 
 // The setTimer function starts and stops the timer
@@ -53,39 +59,65 @@ function startTimer(){
   if (timerCount === 0) {
   // Clears interval
   clearInterval(timer);
-  loseGame();
+  // loseGame();
   timeLeft.textContent= "Time's up";
 }
 },1000)
 }
 
-function loseGame(){
-  correct.textContent="Wrong"
-
-}
-
-function winGame(){
-  correct.textContent="Correct"
-}
-
-//Displays quiz number and question
-function displayQuiz(){
-    title.textContent= titles[0];
-    p1.textContent=questions[0];
-}
-
-//displays quiz choices
-function displayChoices(){
-  quizContainer.setAttribute("style","visibility:visible")
-  button1.setAttribute("style","visibility:hidden")
-  for(var i=0; i<answers.ans1.length;i++){
-    quizContainer.children[i].children[0].textContent=answers.ans1[i];
+//Displays quiz question and choices
+function displayQuiz(qIndex){
+  // Clears existing data 
+  title.innerHTML="";
+  paragraph.innerHTML="";
+  buttonContainer.innerHTML="";
+  // For loops to loop through all info in array
+  for (var i=0;i<questions.length;i++){
+    userQuestion = questions[qindex].question;
+    userChoices=questions[qindex].choices;
+    title.textContent=userQuestion;
   }
-  userChoice();
+  userChoices.forEach(function(newItem) {
+    listItem=document.createElement("li");
+    listItem.textContent= newItem;
+    choicesList.appendChild(listItem);
+    // listItem.addEventListener("click",compare)
+  });
+  
 }
 
-function userChoice(){
+// qindex++;
+
+
+
+
+
+
+
+
+
+// function loseGame(){
+//   correct.textContent="Wrong"
+
+// }
+
+// function winGame(){
+//   correct.textContent="Correct"
+// }
+
+
+// //displays quiz choices
+// function displayChoices(){
+//   quizContainer.setAttribute("style","visibility:visible")
+//   button1.setAttribute("style","visibility:hidden")
+//   for(var i=0; i<answers.ans1.length;i++){
+//     quizContainer.children[i].children[0].textContent=answers.ans1[i];
+//   }
+//   userChoice();
+// }
+
+// function userChoice(){
  
-}
+// }
 
 
