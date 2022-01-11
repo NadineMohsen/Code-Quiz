@@ -1,3 +1,26 @@
+// Creating an object called questions including all the questions, choices and correct answer
+var questions = [
+    {question:"Commonly used data types DO NO INCLUDE: ",
+    choices: ["strings","booleans","alerts","numbers"],
+    answer: "alerts" },
+
+    {question:"The conditions in an if/else statement is enclosed within: ",
+    choices: ["quotes","curly brackets","parentheses","square brackets"],
+    answer: "parentheses" },
+
+    {question:"Arrays in javascript can be used to store, ",
+    choices: ["numbers and strings","other arrays","booleans","all the above"],
+    answer: "all the above" },
+
+    {question:"String values must be enclosed within _____ when being assignes in variables: ",
+    choices: ["commas","curly brackets","quotes","parentheses"],
+    answer: "quotes" },
+
+    { question:"A very useful tool used during development and debugging for printing content to the debugger is: ",
+    choices: ["JavaScript","terminal/bash","for loops","console.log"],
+    answer: "console.log" },
+]
+
 var button1 = document.getElementById("start-quiz");
 var timeLeft= document.getElementById("time-left")
 var question= document.getElementById("p1")
@@ -6,25 +29,14 @@ var quizContainer=document.getElementById("answers")
 var correct = document.getElementById("correct-wrong")
 
 var timer;
-var timerCount;
+var timerCount=75;
+var penalty=10;
 
-var titles = ["Quiz 1","Quiz2","Quiz3","Quiz4","Quiz5"]
-var questions = ["Commonly used data types DO NO INCLUDE","The conditions in an if/else statement is enclosed within",
-                  "Arrays in javascript can be used to store","String values must be enclosed within _____ when being assignes in variables",
-                "A very useful tool used during development and debugging for printing content to the debugger is"]
-var answers = {
-  ans1: ["strings","booleans","alerts","numbers"],
-  ans2:["quotes","curly brackets","parentheses","square brackets"],
-  ans3:["numbers and strings","other arrays","booleans","all the above"],
-  ans4:["commas","curly brackets","quotes","parentheses"],
-  ans5:["JavaScript","terminal/bash","for loops","console.log"]
-}
-
-
+// Attach event listener to start button to call startGame function on click
+button1.addEventListener("click", startGame)
 
 // The startGame function is called when the start button is clicked
 function startGame(){
-  timerCount=75;
   startTimer()
   displayQuiz()
   displayChoices()
@@ -32,18 +44,18 @@ function startGame(){
 
 // The setTimer function starts and stops the timer
 function startTimer(){
-// Sets timer
-timer = setInterval(function(){
-    timerCount--;
-    timeLeft.textContent= timerCount;
-    
-// Tests if time has run out
-if (timerCount === 0) {
+  // Sets timer
+  timer = setInterval(function(){
+  timerCount--;
+  timeLeft.textContent= timerCount;
+
+  // Tests if time has run out
+  if (timerCount === 0) {
   // Clears interval
   clearInterval(timer);
   loseGame();
+  timeLeft.textContent= "Time's up";
 }
-
 },1000)
 }
 
@@ -76,5 +88,4 @@ function userChoice(){
  
 }
 
-// Attach event listener to start button to call startGame function on click
-button1.addEventListener("click", startGame)
+

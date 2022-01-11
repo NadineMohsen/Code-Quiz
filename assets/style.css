@@ -24,7 +24,7 @@ button{
     display: inline-block;
 }
 
-ul,ol{
+ul{
     padding: 0;
     padding-top:20px;
     list-style-type: none;
@@ -33,10 +33,10 @@ ul,ol{
     color: purple;
     font-size: 20px;
 }
-
+/* 
 #answers{
     visibility: hidden;
-}
+} */
 
 #correct-wrong{
     text-align:center;
