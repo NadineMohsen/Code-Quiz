@@ -21,16 +21,18 @@ var questions = [
     answer: "console.log" },
 ]
 
-var button1 = document.getElementById("start-quiz");
+var header=document.getElementById("hs")
+var timeContainer= document.getElementById("time")
 var timeLeft= document.getElementById("time-left")
 var initialText= document.getElementById("initial-text")
-var buttonContainer = document.getElementById("button-container")
-var paragraph= document.getElementById("p1")
 var title=document.querySelector("h1")
+var paragraph= document.getElementById("p1")
 var choicesList=document.getElementById("choices-list")
 var correct = document.getElementById("correct-wrong")
-var timeContainer= document.getElementById("time")
 var labelContainer=document.getElementById("label-container")
+var buttonContainer = document.getElementById("button-container")
+var button1 = document.getElementById("start-quiz");
+
 var timer=0;
 var timerCount=5;
 
@@ -126,8 +128,8 @@ function endofGame(){
   choicesList.setAttribute("style","display:none")
   correct.textContent="End of quiz, your score is: "+ score+"/"+ questions.length;
   timeContainer.innerHTML=""
+  header.innerHTML=""
   title.innerHTML="Your final score is: "+ timerCount; 
-  choicesList.innerHTML=""
   
   //create Label
   var newLabel = document.createElement('label')
@@ -146,7 +148,8 @@ function endofGame(){
 }
 
 
-// function submit1(){
+function submit1(){
+  window.location.replace("./HighScores.html");
 //   var initials= newInput.value;
 //   score= timerCount;
 //   var finalScore=[initials,score]
@@ -159,6 +162,6 @@ function endofGame(){
 //   }
 //   allScores.push (finalScore)
 
-// }
+}
 
 
