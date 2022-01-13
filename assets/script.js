@@ -30,9 +30,9 @@ var title=document.querySelector("h1")
 var choicesList=document.getElementById("choices-list")
 var correct = document.getElementById("correct-wrong")
 var timeContainer= document.getElementById("time")
-
-var timer;
-var timerCount=75;
+var labelContainer=document.getElementById("label-container")
+var timer=0;
+var timerCount=5;
 
 var userQuestion;
 var userChoices;
@@ -49,7 +49,6 @@ button1.addEventListener("click", startGame)
 function startGame(){
   startTimer()
   displayQuiz()
-  // displayChoices()
 }
 
 // The setTimer function starts and stops the timer
@@ -58,15 +57,13 @@ function startTimer(){
   timer = setInterval(function(){
   timerCount--;
   timeLeft.textContent= timerCount;
-
+  
   // Tests if time has run out
-  if (timerCount === 0) {
-  // Clears interval
-  clearInterval(timer);
-  // loseGame();
-  timeLeft.textContent= "Time's up";
-
-}
+  if (timerCount <= 0) {
+  //ends game
+  endofGame();
+  timeContainer.textContent= "Time's up";
+ }
 },1000)
 }
 
@@ -113,22 +110,55 @@ function compare(event){
   next()
 }
 
+//Either displays next question or ends game
 function next(){
   if(qindex>=questions.length){
-    title.innerHTML="Your final score is: "+ timerCount; 
-   endofGame()
+    endofGame()
   }
   else{
     displayQuiz(qindex)
   }
 }
 
+//displays score and label
 function endofGame(){
-  timeContainer.innerHTML=""
+  clearInterval(timer);
+  choicesList.setAttribute("style","display:none")
   correct.textContent="End of quiz, your score is: "+ score+"/"+ questions.length;
+  timeContainer.innerHTML=""
+  title.innerHTML="Your final score is: "+ timerCount; 
   choicesList.innerHTML=""
+  
+  //create Label
+  var newLabel = document.createElement('label')
+  newLabel.textContent="Enter yout initials "
+  labelContainer.appendChild(newLabel)
+  //create input for initials
+  var newInput=document.createElement('input')
+  newInput.textContent=""
+  labelContainer.appendChild(newInput)
+  //create submit button
+  var submit=document.createElement('button')
+  submit.textContent="Submit"
+  buttonContainer.appendChild(submit)
+  
+  submit.addEventListener("click",submit1)
 }
 
 
+// function submit1(){
+//   var initials= newInput.value;
+//   score= timerCount;
+//   var finalScore=[initials,score]
+//   var allScores = localStorage.getItem("allScores")
+//   if(allScores===null){
+//     allScores=[];
+//   }
+//   else{
+//     allScores=JSON.parse(allScores)
+//   }
+//   allScores.push (finalScore)
+
+// }
 
 
