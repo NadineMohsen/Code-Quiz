@@ -148,20 +148,9 @@ function endofGame(){
 }
 
 
-function submit1(){
+function submit1(){ 
+  
   window.location.replace("./HighScores.html");
-//   var initials= newInput.value;
-//   score= timerCount;
-//   var finalScore=[initials,score]
-//   var allScores = localStorage.getItem("allScores")
-//   if(allScores===null){
-//     allScores=[];
-//   }
-//   else{
-//     allScores=JSON.parse(allScores)
-//   }
-//   allScores.push (finalScore)
-
 }
 
 
