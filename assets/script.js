@@ -34,7 +34,7 @@ var buttonContainer = document.getElementById("button-container")
 var button1 = document.getElementById("start-quiz");
 
 var timer=0;
-var timerCount=5;
+var timerCount=75;
 
 var userQuestion;
 var userChoices;
@@ -144,13 +144,30 @@ function endofGame(){
   submit.textContent="Submit"
   buttonContainer.appendChild(submit)
   
-  submit.addEventListener("click",submit1)
-}
-
-
-function submit1(){ 
+  submit.addEventListener("click",function(){
   
-  window.location.replace("./HighScores.html");
-}
+    window.location.replace("./HighScores.html");
+    var initials = newInput.value;
+        if (initials === 0) {
+            prompt("please enter a value");
+        } else {
+            var finalScore = {
+                initials: initials,
+                score: score
+            }
+            console.log(finalScore);
+            var allScores = localStorage.getItem("allScores");
+            if (allScores === null) {
+                allScores = [];
+            } else {
+                allScores = JSON.parse(allScores);
+            }
+            allScores.push(finalScore);
+            var newScore = JSON.stringify(allScores);
+            localStorage.setItem("allScores", newScore);
+        }
+    
+})
 
+}
 

@@ -11,8 +11,17 @@ goBack.addEventListener("click",function(){
     window.location.replace("./index.html")
 })
 
-for(var i=0;i<allScores.length;i++){
-    var newScore= document.createElement("li");
-    newScore.textContent=allScores[i].initials + allScores[i].score;
-    HighScores.appendChild(newScore)
+
+var allScores = localStorage.getItem("allScores");
+allScores = JSON.parse(allScores);
+
+if (allScores !== null) {
+
+    for (var i = 0; i < allScores.length; i++) {
+
+        var createLi = document.createElement("li");
+        createLi.textContent = allScores[i].initials + " " + allScores[i].score;
+        HighScores.appendChild(createLi);
+
+    }
 }
