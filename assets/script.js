@@ -144,28 +144,32 @@ function endofGame(){
   submit.textContent="Submit"
   buttonContainer.appendChild(submit)
   
-  submit.addEventListener("click",function(){
-  
-    window.location.replace("./HighScores.html");
-    var initials = newInput.value;
-        if (initials === 0) {
-            prompt("please enter a value");
-        } else {
+ //When the user clicks submit
+  submit.addEventListener("click",function(event){
+    event.preventDefault();
+    var initials = newInput.value.trim();
+  //If the user didn't enter any initials, a prompt will appear
+        if (initials === "") {
+            alert("Please enter your initials");
+        }
+        //If the user enters his initials, highscores will appear
+         else {
+          window.location.replace("./HighScores.html");
             var finalScore = {
                 initials: initials,
-                score: score
+                score: timerCount
             }
-            console.log(finalScore);
-            var allScores = localStorage.getItem("allScores");
+          console.log(finalScore);
+
+           var allScores = localStorage.getItem("allScores");
             if (allScores === null) {
                 allScores = [];
             } else {
                 allScores = JSON.parse(allScores);
             }
             allScores.push(finalScore);
-            var newScore = JSON.stringify(allScores);
-            localStorage.setItem("allScores", newScore);
-        }
+            localStorage.setItem("allScores", JSON.stringify(allScores));
+         }
     
 })
 

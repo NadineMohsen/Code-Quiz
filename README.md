@@ -16,3 +16,4 @@ https://github.com/NadineMohsen/Code-Quiz
 https://nadinemohsen.github.io/Code-Quiz/
 
 ## Screenshot 
+![Code-Quiz Demo](assets/Code-Quiz.mp4)
