@@ -22,7 +22,6 @@ if (allScores !== null) {
     for (var i = 0; i < allScores.length; i++) {
         //create a list of highscores
         var createLi = document.createElement("li");
-        createLi.setAttribute("class","highscores-list")
         createLi.textContent = allScores[i].initials + " " + allScores[i].score;
         HighScores.appendChild(createLi);
 

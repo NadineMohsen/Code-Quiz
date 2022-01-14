@@ -61,8 +61,15 @@ ul{
     font-size: 20px;
 }
 
-.highscores-list{
-    
-  
+#highscores{
+    padding: 0;
+    margin: auto;
+    text-align: center;
     color:black;
+}
+
+#highscores li{
+    margin-bottom:30px;
+    background-color: #f7e6ff;
+    font-size: 25px; 
 }
