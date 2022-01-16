@@ -84,7 +84,7 @@ function displayQuiz(qIndex){
   }
   //display choices
   userChoices.forEach(function(newItem) {
-    listItem=document.createElement("li");
+    listItem=document.createElement("button");
     listItem.textContent= newItem;
     choicesList.appendChild(listItem);
     listItem.addEventListener("click",compare)
@@ -94,7 +94,7 @@ function displayQuiz(qIndex){
 //Compare choice with correct answer if the user clicked on one of the choices
 function compare(event){
   element = event.target;
-  if (element.matches("li")){
+  if (element.matches("button")){
     //correct answer
     if(element.textContent==questions[qindex].answer){
       score++;
