@@ -154,7 +154,7 @@ function endofGame(){
         }
         //If the user enters his initials, highscores will appear
          else {
-          window.location.replace("./highScores.html");
+          window.location.replace("./highscores.html");
             var finalScore = {
                 initials: initials,
                 score: timerCount
